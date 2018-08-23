@@ -14,7 +14,10 @@ import java.util.List;
  * @author hanqingsong
  * @date 18/8/23
  */
-public interface CustomerRepository extends CrudRepository<Customer,Long>{
+
+@RepositoryRestResource(collectionResourceRel = "customer", path = "customer")
+public interface Customer2Repository extends CrudRepository<Customer,Long>{
+
     List<Customer> findByLastName(String lastName);
 
     @Query(nativeQuery = true,value = "select * from customer where last_name=:lastName")
