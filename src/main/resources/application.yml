@@ -1,6 +1,34 @@
 server:
   port: 8000
+
+spring:
+   profiles:
+     active: dev
+
+
 logging:
   path: logs
   pattern:
     file: '%d{ISO8601} [%-16.16thread] %-5level -- %-60.60class - %M [%4line] -- %X{request-id} | %msg%n'
+
+---
+#开发环境配置
+spring:
+  profiles: dev
+  datasource:
+       url: jdbc:mysql://mydb:3306/test?useUnicode=true&amp;characterEncoding=UTF-8
+       username: admin1
+       password: 123456
+       driver-class-name: com.mysql.jdbc.Driver
+
+---
+#正式环境配置
+spring:
+  profiles: pro
+  datasource:
+       url: jdbc:mysql://mydb:3306/test?useUnicode=true&amp;characterEncoding=UTF-8
+       username: admin1
+       password: 123456
+       driver-class-name: com.mysql.jdbc.Driver
+
+
